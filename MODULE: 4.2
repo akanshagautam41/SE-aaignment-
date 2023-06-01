@@ -1,0 +1,74 @@
+// Write a program of to swap the two values using templates 
+#include <iostream>
+
+template <typename T>
+void swapValues(T& a, T& b) {
+    T temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 10;
+    int y = 20;
+
+    std::cout << "Before swap: x = " << x << ", y = " << y << std::endl;
+
+    swapValues(x, y);
+
+    std::cout << "After swap: x = " << x << ", y = " << y << std::endl;
+
+    return 0;
+}
+
+
+
+// Write a program of to sort the array using templates
+#include <iostream>
+
+template <typename T>
+void sortArray(T array[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                T temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+}
+
+template <typename T>
+void printArray(T array[], int size) {
+    for (int i = 0; i < size; i++) {
+        std::cout << array[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    int intArray[] = {5, 3, 8, 2, 1};
+    double doubleArray[] = {3.14, 2.71, 1.41, 1.73, 0.99};
+    char charArray[] = {'z', 'a', 'c', 'x', 'b'};
+
+    int intSize = sizeof(intArray) / sizeof(int);
+    int doubleSize = sizeof(doubleArray) / sizeof(double);
+    int charSize = sizeof(charArray) / sizeof(char);
+
+    std::cout << "Before sorting:" << std::endl;
+    printArray(intArray, intSize);
+    printArray(doubleArray, doubleSize);
+    printArray(charArray, charSize);
+
+    sortArray(intArray, intSize);
+    sortArray(doubleArray, doubleSize);
+    sortArray(charArray, charSize);
+
+    std::cout << "After sorting:" << std::endl;
+    printArray(intArray, intSize);
+    printArray(doubleArray, doubleSize);
+    printArray(charArray, charSize);
+
+    return 0;
+}
